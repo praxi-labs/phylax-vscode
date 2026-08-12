@@ -1,0 +1,95 @@
+{
+  "name": "phylax",
+  "displayName": "Phylax",
+  "description": "View package trust, attestations, and policy feedback in VS Code.",
+  "version": "0.1.0",
+  "publisher": "phylax",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.90.0",
+    "node": ">=20"
+  },
+  "categories": ["Linters", "Other"],
+  "keywords": ["security", "supply-chain", "dependencies", "sbom"],
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "workspaceContains:**/package.json",
+    "workspaceContains:**/package-lock.json",
+    "workspaceContains:**/requirements.txt",
+    "workspaceContains:**/pyproject.toml"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "phylax.signIn",
+        "title": "Phylax: Sign in"
+      },
+      {
+        "command": "phylax.scanWorkspace",
+        "title": "Phylax: Scan workspace dependencies"
+      },
+      {
+        "command": "phylax.clearDiagnostics",
+        "title": "Phylax: Clear diagnostics"
+      }
+    ],
+    "configuration": {
+      "title": "Phylax",
+      "properties": {
+        "phylax.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable Phylax verification."
+        },
+        "phylax.scanOnOpen": {
+          "type": "boolean",
+          "default": true,
+          "description": "Verify dependencies when a manifest is opened."
+        },
+        "phylax.policyLevel": {
+          "type": "string",
+          "enum": ["lenient", "moderate", "strict"],
+          "default": "moderate",
+          "description": "Which verdicts become Problems panel entries. Lenient reports only BLOCK, moderate adds WARN, strict reports everything."
+        },
+        "phylax.showInlineResults": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show trust verdicts inline in manifests."
+        },
+        "phylax.autoUpdate": {
+          "type": "boolean",
+          "default": true,
+          "description": "Re-verify automatically when a manifest changes."
+        },
+        "phylax.policy": {
+          "type": "string",
+          "default": "",
+          "description": "Named Phylax policy to evaluate against. Empty uses the organization default."
+        },
+        "phylax.baseUrl": {
+          "type": "string",
+          "default": "https://api.phyi.dev",
+          "description": "Phylax API base URL."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "esbuild src/extension.ts --bundle --platform=node --target=node20 --format=cjs --external:vscode --outfile=out/extension.js",
+    "clean": "node -e \"require('node:fs').rmSync('out',{recursive:true,force:true})\"",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "vscode:prepublish": "npm run clean && npm run build"
+  },
+  "dependencies": {
+    "@phylax/sdk": "file:../phylax-sdk-js"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/vscode": "^1.90.0",
+    "esbuild": "^0.24.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}
