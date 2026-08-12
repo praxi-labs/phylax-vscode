@@ -95,7 +95,7 @@
     "vscode:prepublish": "npm run clean && npm run build"
   },
   "devDependencies": {
-    "@phylax/sdk": "^0.1.0",
+    "@phylax/sdk": "file:../phylax-sdk-js",
     "@types/node": "^22.10.2",
     "@types/vscode": "^1.90.0",
     "esbuild": "^0.24.2",
