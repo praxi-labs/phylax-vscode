@@ -1,0 +1,26 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: Build the vsix without publishing it.
+        type: boolean
+        default: true
+
+permissions: {}
+
+jobs:
+  publish:
+    name: Publish
+    uses: praxi-labs/ci/.github/workflows/vscode-publish.yml@v1
+    with:
+      sibling-package: phylax-sdk-js
+      dry-run: ${{ github.event_name == 'workflow_dispatch' && inputs.dry-run }}
+    permissions:
+      contents: read
+    secrets:
+      VSCE_PAT: ${{ secrets.VSCE_PAT }}
+      OVSX_TOKEN: ${{ secrets.OVSX_TOKEN }}
