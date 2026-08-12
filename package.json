@@ -9,8 +9,16 @@
     "vscode": "^1.90.0",
     "node": ">=20"
   },
-  "categories": ["Linters", "Other"],
-  "keywords": ["security", "supply-chain", "dependencies", "sbom"],
+  "categories": [
+    "Linters",
+    "Other"
+  ],
+  "keywords": [
+    "security",
+    "supply-chain",
+    "dependencies",
+    "sbom"
+  ],
   "main": "./out/extension.js",
   "activationEvents": [
     "workspaceContains:**/package.json",
@@ -48,7 +56,11 @@
         },
         "phylax.policyLevel": {
           "type": "string",
-          "enum": ["lenient", "moderate", "strict"],
+          "enum": [
+            "lenient",
+            "moderate",
+            "strict"
+          ],
           "default": "moderate",
           "description": "Which verdicts become Problems panel entries. Lenient reports only BLOCK, moderate adds WARN, strict reports everything."
         },
@@ -82,14 +94,12 @@
     "typecheck": "tsc --noEmit",
     "vscode:prepublish": "npm run clean && npm run build"
   },
-  "dependencies": {
-    "@phylax/sdk": "file:../phylax-sdk-js"
-  },
   "devDependencies": {
+    "@phylax/sdk": "^0.1.0",
     "@types/node": "^22.10.2",
     "@types/vscode": "^1.90.0",
     "esbuild": "^0.24.2",
     "typescript": "^5.7.2",
-    "vitest": "^2.1.8"
+    "vitest": "^4.1.10"
   }
 }
