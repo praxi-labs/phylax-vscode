@@ -1,4 +1,4 @@
-import { PhylaxSdk } from '@phylax/sdk'
+import { PhylaxSdk } from '@phyi/sdk'
 
 import type { DependencyRef } from './manifest.js'
 import { normaliseVerdict, type VerdictSummary } from './severity.js'
