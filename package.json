@@ -1,7 +1,7 @@
 {
   "name": "phylax",
   "displayName": "Phylax",
-  "description": "View package trust, attestations, and policy feedback in VS Code.",
+  "description": "See which dependencies are unsafe without leaving your editor. Phylax marks any package whose verdict is not ALLOW in the Problems panel.",
   "version": "0.1.0",
   "publisher": "phylax",
   "icon": "media/icon.png",
@@ -20,13 +20,18 @@
   },
   "categories": [
     "Linters",
+    "Programming Languages",
     "Other"
   ],
   "keywords": [
     "security",
     "supply-chain",
     "dependencies",
-    "sbom"
+    "sbom",
+    "vulnerability",
+    "npm",
+    "pypi",
+    "attestation"
   ],
   "main": "./out/extension.js",
   "activationEvents": [
@@ -110,5 +115,10 @@
     "esbuild": "^0.28.0",
     "typescript": "^5.7.2",
     "vitest": "^4.1.10"
-  }
+  },
+  "galleryBanner": {
+    "color": "#0D0D0D",
+    "theme": "dark"
+  },
+  "qna": "https://github.com/praxi-labs/phylax-vscode/issues"
 }
