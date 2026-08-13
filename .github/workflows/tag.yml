@@ -14,3 +14,14 @@ jobs:
       version-path: package.json
     permissions:
       contents: write
+
+  publish:
+    name: Publish
+    needs: tag
+    if: needs.tag.outputs.tagged == 'true'
+    uses: praxi-labs/ci/.github/workflows/vscode-publish.yml@v1
+    permissions:
+      contents: read
+    secrets:
+      VSCE_PAT: ${{ secrets.VSCE_PAT }}
+      OVSX_TOKEN: ${{ secrets.OVSX_TOKEN }}

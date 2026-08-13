@@ -2,7 +2,7 @@
   "name": "phylax",
   "displayName": "Phylax",
   "description": "See which dependencies are unsafe without leaving your editor. Phylax marks any package whose verdict is not ALLOW in the Problems panel.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "phylax",
   "icon": "media/icon.png",
   "license": "MIT",
