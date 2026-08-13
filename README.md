@@ -1,5 +1,7 @@
 # Phylax for Visual Studio Code
 
+[![VS Code Marketplace](https://img.shields.io/badge/VS_Code-Marketplace-0098FF)](https://marketplace.visualstudio.com/items?itemName=phylax.phylax)
+
 View package trust, attestations and policy feedback without leaving your editor.
 
 The extension reads your manifests and marks any dependency whose Phylax verdict is not `ALLOW`, so a risky package shows up in the Problems panel alongside your type errors rather than at the end of a CI run.
@@ -73,3 +75,17 @@ npm run build
 ## License
 
 MIT
+
+## The rest of Phylax
+
+| Tool | Where to get it |
+| --- | --- |
+| JavaScript SDK | [`@phyi/sdk`](https://www.npmjs.com/package/@phyi/sdk) on npm |
+| Python SDK | [`phylax-sdk`](https://github.com/praxi-labs/phylax-sdk-python), PyPI release pending |
+| MCP server | [`@phyi/mcp`](https://www.npmjs.com/package/@phyi/mcp) on npm |
+| Agent runtime gate | [`@phyi/runtime-gate`](https://www.npmjs.com/package/@phyi/runtime-gate) on npm |
+| VS Code extension | [`phylax.phylax`](https://marketplace.visualstudio.com/items?itemName=phylax.phylax) on the Marketplace |
+| GitHub Action | [`praxi-labs/phylax-action`](https://github.com/praxi-labs/phylax-action) |
+| Browser extension | [`praxi-labs/phylax-chrome`](https://github.com/praxi-labs/phylax-chrome/releases/latest), Web Store listing pending |
+
+Docs live at [phyi.dev](https://phyi.dev).
