@@ -4,6 +4,7 @@
   "description": "View package trust, attestations, and policy feedback in VS Code.",
   "version": "0.1.0",
   "publisher": "phylax",
+  "icon": "media/icon.png",
   "license": "MIT",
   "repository": {
     "type": "git",
