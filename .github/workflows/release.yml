@@ -17,7 +17,6 @@ jobs:
     name: Publish
     uses: praxi-labs/ci/.github/workflows/vscode-publish.yml@v1
     with:
-      sibling-package: phylax-sdk-js
       dry-run: ${{ github.event_name == 'workflow_dispatch' && inputs.dry-run }}
     permissions:
       contents: read
