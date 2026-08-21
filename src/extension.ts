@@ -5,6 +5,7 @@ import { isSupportedManifest, parseManifest } from './manifest.js'
 import {
   diagnosticMessage,
   hoverMarkdown,
+  isUncovered,
   normaliseVerdict,
   severityFor,
   shouldReport,
@@ -83,8 +84,9 @@ async function scanDocument(document: vscode.TextDocument): Promise<void> {
       continue
     }
 
+    const uncovered = isUncovered(summary)
     const verdict = normaliseVerdict(summary.verdict)
-    if (!shouldReport(verdict, level)) {
+    if (uncovered ? level !== 'strict' : !shouldReport(verdict, level)) {
       continue
     }
 
@@ -92,7 +94,9 @@ async function scanDocument(document: vscode.TextDocument): Promise<void> {
     const diagnostic = new vscode.Diagnostic(
       line.range,
       diagnosticMessage(summary),
-      SEVERITY_MAP[severityFor(verdict)] ?? vscode.DiagnosticSeverity.Information,
+      uncovered
+        ? vscode.DiagnosticSeverity.Information
+        : SEVERITY_MAP[severityFor(verdict)] ?? vscode.DiagnosticSeverity.Information,
     )
     diagnostic.source = 'Phylax'
     entries.push(diagnostic)

@@ -12,6 +12,10 @@ export interface VerdictSummary {
   [key: string]: unknown
 }
 
+export function isUncovered(summary: VerdictSummary): boolean {
+  return String(summary.coverage ?? '') === 'none'
+}
+
 export function normaliseVerdict(value: unknown): Verdict {
   const text = String(value ?? '').toUpperCase()
   if (text === 'BLOCK') {
@@ -44,6 +48,9 @@ export function severityFor(verdict: Verdict): DiagnosticSeverity {
 }
 
 export function diagnosticMessage(summary: VerdictSummary): string {
+  if (isUncovered(summary)) {
+    return `Phylax: ${summary.artifact} has not been evaluated by the network`
+  }
   const verdict = normaliseVerdict(summary.verdict)
   const parts = [`Phylax ${verdict}: ${summary.artifact}`]
 
