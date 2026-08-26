@@ -83,6 +83,12 @@
           "default": true,
           "description": "Show trust verdicts inline in manifests."
         },
+        "phylax.token": {
+          "type": "string",
+          "default": "",
+          "scope": "machine",
+          "markdownDescription": "Phylax API token, set by **Phylax: Sign in**. Not synced across machines."
+        },
         "phylax.autoUpdate": {
           "type": "boolean",
           "default": true,
